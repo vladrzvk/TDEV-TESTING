@@ -7,17 +7,17 @@ services:
         uid: 1000
       context: ./demo/
       dockerfile: Dockerfile
-    image: travellist
-    container_name: travellist-app
+    image: pickmanager
+    container_name: pickmanager-app
     restart: unless-stopped
     working_dir: /var/www/
     volumes:
       - ./demo/:/var/www
     networks:
-      - travellist
+      - pickmanager
   db:
     image: mysql:5.7
-    container_name: travellist-db
+    container_name: pickmanager-db
     restart: unless-stopped
     environment:
       MYSQL_DATABASE: ${DB_DATABASE}
@@ -29,7 +29,7 @@ services:
     volumes:
       - ./mysql:/docker-entrypoint-initdb.d
     networks:
-      - travellist
+      - pickmanager
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -43,10 +43,10 @@ services:
     ports:
       - 8081:80
     networks:
-      - travellist
+      - pickmanager
   nginx:
     image: nginx:1.17-alpine
-    container_name: travellist-nginx
+    container_name: pickmanager-nginx
     restart: unless-stopped
     ports:
       - 8000:80
@@ -54,8 +54,8 @@ services:
       - ./demo/:/var/www
       - ./nginx:/etc/nginx/conf.d
     networks:
-      - travellist
+      - pickmanager
 
 networks:
-  travellist:
+  pickmanager:
     driver: bridge
