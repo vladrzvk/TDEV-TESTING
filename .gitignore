@@ -1,15 +1,2 @@
-/demo/node_modules
-/demo/public/hot
-/demo/public/storage
-/demo/storage/*.key
-/demo/vendor
-/demo/.env
-/demo/.env.exemple
-/demo/.phpunit.result.cache
-/demo/.idea
-/demo/.bash_history
-/demo/Homestead.json
-/demo/Homestead.yaml
-/demo/npm-debug.log
-/demo/yarn-error.log
 .env
+/demo/.env
