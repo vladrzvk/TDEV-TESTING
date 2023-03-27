@@ -9,3 +9,7 @@ Route::get('/', function () {
   // return view('travel_list', ['visited' => $visited, 'togo' => $togo ] );
   return view('welcome');
 });
+
+Route::resource("clients", ClientsController::class);
+Route::resource("folders", FoldersController::class);
+Route::resource("image", ImageController::class);
