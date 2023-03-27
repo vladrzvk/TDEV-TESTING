@@ -57,7 +57,7 @@ CREATE TABLE `images` (
 -- Structure de la table `user`
 --
 
-CREATE TABLE `user` (
+CREATE TABLE `clients` (
   `id` int(10) NOT NULL,
   `first_name` varchar(535) NOT NULL,
   `last_name` varchar(535) NOT NULL,
@@ -85,7 +85,7 @@ ALTER TABLE `images`
 --
 -- Index pour la table `user`
 --
-ALTER TABLE `user`
+ALTER TABLE `clients`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -101,7 +101,7 @@ ALTER TABLE `folders`
 --
 -- AUTO_INCREMENT pour la table `user`
 --
-ALTER TABLE `user`
+ALTER TABLE `clients`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
@@ -112,7 +112,7 @@ ALTER TABLE `user`
 -- Contraintes pour la table `folders`
 --
 ALTER TABLE `folders`
-  ADD CONSTRAINT `owner` FOREIGN KEY (`id_owner`) REFERENCES `user` (`id`);
+  ADD CONSTRAINT `owner` FOREIGN KEY (`id_owner`) REFERENCES `client` (`id`);
 
 --
 -- Contraintes pour la table `images`
