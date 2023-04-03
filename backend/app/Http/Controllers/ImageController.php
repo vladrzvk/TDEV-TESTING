@@ -15,6 +15,8 @@ class ImageController extends Controller
     public function index()
     {
         //
+        $image = Image::orderBy('posted', 'description')->paginate(3);
+        return view('image.index', ['image' => $image]);
     }
 
     /**
@@ -25,6 +27,7 @@ class ImageController extends Controller
     public function create()
     {
         //
+        return view('image.create');
     }
 
     /**
@@ -36,6 +39,22 @@ class ImageController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'posted'=>'required',
+            'image'=>'required|image|mimes:jpeg,png,gif,svg|max:2048',
+            'lieu'=>'required|min:1',
+            'description'=>'required|min:1',
+        ]);
+
+        // $input = $request->all();
+
+        $imageName = time() . '.' . $request->image->extension();
+        $request->image->storeAs('public/images', $imageName);
+        $postData = ['description' => $request->description, 'lieu'=> $request->lieu, 'posted'=> time(), 'image'=> $imageName];
+
+        Images::create($postData);
+        return redirect('/image')->with(['message' => 'Images added successfully!', 'status' => 'success']);
+      
     }
 
     /**
@@ -47,6 +66,7 @@ class ImageController extends Controller
     public function show(image $image)
     {
         //
+        return view('image.show', ['image' => $post]);
     }
 
     /**

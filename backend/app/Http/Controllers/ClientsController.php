@@ -15,6 +15,8 @@ class ClientsController extends Controller
     public function index()
     {
         //
+        $clients = Clients::orderBy('id', 'email')->paginate(3);
+        return view('clients.index', ['clients' => $posts]);
     }
 
     /**
@@ -25,6 +27,7 @@ class ClientsController extends Controller
     public function create()
     {
         //
+        return view('clients.create');
     }
 
     /**
@@ -36,6 +39,14 @@ class ClientsController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|min:5',
+            'password' => 'required|min:5',
+        ]);
+
+
     }
 
     /**

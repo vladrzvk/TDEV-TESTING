@@ -5,14 +5,14 @@ services:
       args:
         user: Vladr
         uid: 1000
-      context: ./demo/
+      context: ./backend/
       dockerfile: Dockerfile
     image: pickmanager
     container_name: pickmanager-app
     restart: unless-stopped
     working_dir: /var/www/
     volumes:
-      - ./demo/:/var/www
+      - ./backend/:/var/www
     networks:
       - pickmanager
   db:
@@ -51,7 +51,7 @@ services:
     ports:
       - 8000:80
     volumes:
-      - ./demo/:/var/www
+      - ./backend/:/var/www
       - ./nginx:/etc/nginx/conf.d
     networks:
       - pickmanager
