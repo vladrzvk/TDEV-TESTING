@@ -10,6 +10,7 @@ Route::get('/', function () {
   return view('welcome');
 });
 
-Route::resource("clients", ClientsController::class);
+
 Route::resource("folders", FoldersController::class);
 Route::resource("image", ImageController::class);
+Route::resource("User", ImageController::class);
