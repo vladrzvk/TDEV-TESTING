@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\UserControllers;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,3 +16,17 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/testing', function(){
+    return 'this is a test';
+});
+
+
+Route::get('/error', function(){
+    return 'this a flop';
+})->name('error');
+
+
+Route::post('register', [UserControllers::class, 'register']);
+
+// Route::post('/register', 'App\Http\Controllers\UserController@register');

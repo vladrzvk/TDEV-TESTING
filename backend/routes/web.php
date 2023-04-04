@@ -11,6 +11,6 @@ Route::get('/', function () {
 });
 
 
-Route::resource("folders", FoldersController::class);
-Route::resource("image", ImageController::class);
-Route::resource("User", ImageController::class);
+// Route::resource("folders", FoldersController::class);
+// Route::resource("image", ImageController::class);
+// Route::resource("User", UserController::class);
